@@ -1,0 +1,28 @@
+{
+	"name" : "toa/validator-bundle",
+	"description" : "Validator Bundle for Symfony2",
+	"type" : "symfony-bundle",
+	"authors" : [{
+			"name" : "Enrico Thies",
+			"email" : "enrico.thies@gmail.com"
+		}
+	],
+	"keywords" : [
+		"audio csv video validator"
+	],
+	"homepage" : "https://github.com/toaotc/ValidatorBundle",
+	"license" : [
+		"MIT"
+	],
+	"require" : {
+		"toa/validator" : "*",
+		"goodby/csv": "*"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Toa\\Bundle\\ValidatorBundle" : ""
+		}
+	},
+	"target-dir" : "Toa/Bundle/ValidatorBundle",
+	"minimum-stability" : "dev"
+}
