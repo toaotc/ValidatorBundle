@@ -1,6 +1,6 @@
 <?php
 
-namespace Toa\Bundle\ValidatorBundle\Validator\Constraints;
+namespace Toa\Bundle\ValidatorBundle\Constraints;
 
 use Toa\Component\Validator\Constraints\Csv as BaseCsv;
 
