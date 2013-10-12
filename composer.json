@@ -18,6 +18,9 @@
 		"toa/validator" : "*",
 		"goodby/csv": "*"
 	},
+	"require-dev" : {
+		"symfony/framework-bundle" : "*"
+	},
 	"autoload" : {
 		"psr-0" : {
 			"Toa\\Bundle\\ValidatorBundle" : ""
