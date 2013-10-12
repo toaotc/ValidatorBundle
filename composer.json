@@ -19,7 +19,7 @@
 		"goodby/csv": "*"
 	},
 	"require-dev" : {
-		"symfony/framework-bundle" : "*"
+		"symfony/framework-bundle" : "~2.1"
 	},
 	"autoload" : {
 		"psr-0" : {
