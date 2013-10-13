@@ -38,31 +38,14 @@ class VideoContainerTest extends ContainerTest
     {
         $container = $this->createContainer(array('toa_validator' => array('video' => true)));
 
-        $this->assertInstanceOf('Toa\Component\Validator\Provider\VideoProviderInterface', $container->get('toa_validator.provider.video'));
-        $this->assertInstanceOf('Toa\Component\Validator\Constraints\VideoValidator', $container->get('toa_validator.validator.video'));
+        $this->assertInstanceOf(
+            'Toa\Component\Validator\Provider\VideoProviderInterface',
+            $container->get('toa_validator.provider.video')
+        );
+        $this->assertInstanceOf(
+            'Toa\Component\Validator\Constraints\VideoValidator',
+            $container->get('toa_validator.validator.video')
+        );
         $this->assertInstanceOf('FFMpeg\FFMpeg', $container->get('toa_validator.helper.ffmpeg'));
-    }
-
-    /**
-     * @test
-     */
-    public function testVideoEnabledTrueConfiguration()
-    {
-        $container = $this->createContainer(array('toa_validator' => array('video' => array('enabled' => true))));
-
-        $this->assertInstanceOf('Toa\Component\Validator\Provider\VideoProviderInterface', $container->get('toa_validator.provider.video'));
-        $this->assertInstanceOf('Toa\Component\Validator\Constraints\VideoValidator', $container->get('toa_validator.validator.video'));
-        $this->assertInstanceOf('FFMpeg\FFMpeg', $container->get('toa_validator.helper.ffmpeg'));
-    }
-
-    /**
-     * @test
-     */
-    public function testVideoEnabledFalseConfiguration()
-    {
-        $container = $this->createContainer(array('toa_validator' => array('video' => array('enabled' => false))));
-
-        $this->assertFalse($container->hasDefinition('toa_validator.provider.video'));
-        $this->assertFalse($container->hasDefinition('toa_validator.validator.video'));
     }
 }

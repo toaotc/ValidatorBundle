@@ -24,40 +24,10 @@ class Configuration implements ConfigurationInterface
             ->addDefaultsIfNotSet()
             ->children()
                 ->booleanNode('csv')->treatNullLike(false)->defaultFalse()->end()
-                ->append($this->createFFMpegNode('audio'))
-                ->append($this->createFFMpegNode('video'))
+                ->booleanNode('audio')->treatNullLike(false)->defaultFalse()->end()
+                ->booleanNode('video')->treatNullLike(false)->defaultFalse()->end()
             ->end();
 
         return $treeBuilder;
-    }
-
-    private function createFFMpegNode($name)
-    {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root($name);
-
-        $node
-            ->treatNullLike(false)
-            ->treatFalseLike(array('enabled' => false, 'ffmpeg' => false))
-            ->treatTrueLike(array('enabled' => true, 'ffmpeg' => true))
-            ->beforeNormalization()
-                ->ifArray()
-                ->then(
-                    function ($v) {
-                        if ($v['enabled'] && !isset($v['ffmpeg'])) {
-                            return array('enabled' => true, 'ffmpeg' => true);
-                        }
-
-                        return $v;
-                    }
-                )
-            ->end()
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->booleanNode('enabled')->defaultFalse()->end()
-                ->booleanNode('ffmpeg')->defaultFalse()->end()
-            ->end();
-
-        return $node;
     }
 }

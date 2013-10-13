@@ -28,15 +28,15 @@ class ToaValidatorExtension extends Extension
             $loader->load('csv.xml');
         }
 
-        if ($config['audio']['ffmpeg'] || $config['video']['ffmpeg']) {
+        if ($config['audio'] || $config['video']) {
             $loader->load('ffmpeg.xml');
         }
 
-        if ($config['audio']['enabled']) {
+        if ($config['audio']) {
             $loader->load('audio.xml');
         }
 
-        if ($config['video']['enabled']) {
+        if ($config['video']) {
             $loader->load('video.xml');
         }
     }
