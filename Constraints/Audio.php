@@ -2,19 +2,19 @@
 
 namespace Toa\Bundle\ValidatorBundle\Constraints;
 
-use Toa\Component\Validator\Constraints\Csv as BaseConstraint;
+use Toa\Component\Validator\Constraints\Audio as BaseConstraint;
 
 /**
- * Csv
+ * Audio
  *
  * @author Enrico Thies <enrico.thies@gmail.com>
  *
  * @Annotation
  */
-class Csv extends BaseConstraint
+class Audio extends BaseConstraint
 {
-    /** @var Toa\Component\Validator\Constraints\CsvValidator */
-    public $service = 'toa_validator.validator.csv';
+    /** @var Toa\Component\Validator\Constraints\AudioValidator */
+    public $service = 'toa_validator.validator.audio';
 
     /**
      * {@inheritdoc}

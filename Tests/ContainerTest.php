@@ -12,15 +12,14 @@ use Toa\Bundle\ValidatorBundle\DependencyInjection\ToaValidatorExtension;
  *
  * @author Enrico Thies <enrico.thies@gmail.com>
  */
-class ContainerTest extends \PHPUnit_Framework_TestCase
+abstract class ContainerTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var ContainerBuilder */
-    protected $container;
-
     /**
-     * {@inheritdoc}
+     * @param array $data
+     *
+     * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
-    protected function setUp()
+    protected function createContainer(array $data = array())
     {
         $container = new ContainerBuilder(
             new ParameterBag(
@@ -38,28 +37,12 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $extension = new ToaValidatorExtension();
         $container->registerExtension($extension);
-        $extension->load(array(), $container);
+        $extension->load($data, $container);
 
         $container->getCompilerPassConfig()->setOptimizationPasses(array());
         $container->getCompilerPassConfig()->setRemovingPasses(array());
         $container->compile();
 
-        $this->container = $container;
-    }
-
-    /**
-     * @test
-     */
-    public function testContainer()
-    {
-        $this->assertInstanceOf(
-            'Toa\Component\Validator\Provider\GoodbyCsvProvider',
-            $this->container->get('toa_validator.provider.csv')
-        );
-
-        $this->assertInstanceOf(
-            'Toa\Component\Validator\Constraints\CsvValidator',
-            $this->container->get('toa_validator.validator.csv')
-        );
+        return $container;
     }
 }

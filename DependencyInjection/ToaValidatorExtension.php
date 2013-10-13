@@ -23,6 +23,21 @@ class ToaValidatorExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+
+        if ($config['csv']) {
+            $loader->load('csv.xml');
+        }
+
+        if ($config['audio']['ffmpeg'] || $config['video']['ffmpeg']) {
+            $loader->load('ffmpeg.xml');
+        }
+
+        if ($config['audio']['enabled']) {
+            $loader->load('audio.xml');
+        }
+
+        if ($config['video']['enabled']) {
+            $loader->load('video.xml');
+        }
     }
 }

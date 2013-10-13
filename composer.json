@@ -15,11 +15,12 @@
 		"MIT"
 	],
 	"require" : {
-		"toa/validator" : "*",
-		"goodby/csv": "*"
+		"symfony/framework-bundle" : "~2.1",
+		"toa/validator" : "*"
 	},
-	"require-dev" : {
-		"symfony/framework-bundle" : "~2.1"
+	"suggest": {
+		"goodby/csv" : "",
+		"php-ffmpeg/php-ffmpeg" : ""
 	},
 	"autoload" : {
 		"psr-0" : {
@@ -27,5 +28,8 @@
 		}
 	},
 	"target-dir" : "Toa/Bundle/ValidatorBundle",
-	"minimum-stability" : "dev"
+	"minimum-stability" : "dev",
+	"require-dev": {
+		"php-ffmpeg/php-ffmpeg": "*"
+	}
 }

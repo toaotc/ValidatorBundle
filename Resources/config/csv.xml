@@ -8,10 +8,9 @@
         <parameter key="toa_validator.provider.csv.class">Toa\Component\Validator\Provider\GoodbyCsvProvider</parameter>
         <parameter key="toa_validator.validator.csv.class">Toa\Component\Validator\Constraints\CsvValidator</parameter>
     </parameters>
-
+    
     <services>
         <service id="toa_validator.provider.csv" class="%toa_validator.provider.csv.class%" />
-        
         <service id="toa_validator.validator.csv" class="%toa_validator.validator.csv.class%">
             <argument type="service" id="toa_validator.provider.csv" />
             <tag name="validator.constraint_validator" alias="toa_validator.validator.csv" />
